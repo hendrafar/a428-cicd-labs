@@ -1,8 +1,9 @@
 node {
     stage('Build') {
-        // Menentukan image Docker dan argumen
+        // Menentukan image Docker
         docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
-            // Langkah-langkah dalam container
+            // Steps in container
+            sh 'apt-get update && apt-get install -y npm'
             sh 'npm install'
         }
     }
